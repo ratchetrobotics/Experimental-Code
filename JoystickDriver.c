@@ -120,7 +120,7 @@ long ntotalMessageCount = 0;
 #if defined(_Target_Robot_)
 bool bDisconnected = false;
 bool bOverrideJoystickDisabling = false;
-long nNoMessageCounterLimit = 10;
+long nNoMessageCounterLimit = 50;
 long nNoMessageCounter = 0;
 task readMsgFromPC()
 {
