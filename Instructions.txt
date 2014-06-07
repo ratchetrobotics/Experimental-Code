@@ -1,0 +1,1 @@
+Simply copy and paste the JoystickDriver.c file from this folder into the folder you are housing your program in and compile as usual. The robotc compiler will automatically draw form the revised joystickdriver file you copied.
