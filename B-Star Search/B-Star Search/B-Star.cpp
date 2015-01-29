@@ -34,3 +34,17 @@ float distancefromcenterline(point tpoint)
 {
 	return abs((directline.second.second - directline.first.second)*tpoint.first - (directline.second.first - directline.first.first)*tpoint.second + directline.second.first*directline.first.second - directline.second.second*directline.first.first) / (sqrt(pow(directline.second.first - directline.first.first, 2) + pow(directline.second.second - directline.first.first, 2)));
 }
+
+path findshortestpath(int maxjumps, point start, point end)
+{
+	directline.first.first = start.first;
+	directline.first.second = start.second;
+	directline.second.first = end.first;
+	directline.second.second = end.second;
+
+	path directpath;
+	directpath.push_back(start);
+	directpath.push_back(end);
+
+	if (!intersect(directpath)){return;}
+}
