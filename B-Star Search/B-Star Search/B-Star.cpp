@@ -21,7 +21,7 @@ unsigned const int mapsizey = 140; // vertical size size of the map
 path shortestpath;
 line directline;
 
-float pathlength(vector<pair<float, float>> tpath)
+float pathlength(path tpath)
 {
 	float length;
 	for (int i = 1; i < tpath.size(); i++)
@@ -31,7 +31,7 @@ float pathlength(vector<pair<float, float>> tpath)
 	return length;
 }
 
-float distancefromcenterline(pair<float, float> tpoint)
+float distancefromcenterline(point tpoint)
 {
 	return abs((directline.second.second - directline.first.second)*tpoint.first - (directline.second.first - directline.first.first)*tpoint.second + directline.second.first*directline.first.second - directline.second.second*directline.first.first) / (sqrt(pow(directline.second.first - directline.first.first, 2) + pow(directline.second.second - directline.first.first, 2)));
 }
