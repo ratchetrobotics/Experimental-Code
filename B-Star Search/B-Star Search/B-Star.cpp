@@ -21,6 +21,12 @@ path shortestpath;
 line directline;
 vector<line> obsticals;
 
+bool onSegment(point p, point q, point r)
+{
+	if (q.first <= max(p.first, r.first) && q.first >= min(p.first, r.first) && q.second <= max(p.second, r.second) && q.second >= min(p.second, r.second)){return true;}
+	return false;
+}
+
 bool obsticalcheck(path tpath)
 {
 	for (int i = 0; i < tpath.size(); i++)
