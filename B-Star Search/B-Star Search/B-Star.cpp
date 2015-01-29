@@ -9,8 +9,9 @@
 
 using namespace std;
 
-typedef vector<pair<float, float>> path;
-typedef pair < pair<float, float>, pair<float, float> > line;
+typedef vector <pair<float, float>> path;
+typedef pair <pair<float, float>, pair<float, float>> line;
+typedef pair <float, float> point;
 
 int jumps = 1;
 
