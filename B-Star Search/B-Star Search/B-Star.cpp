@@ -13,8 +13,6 @@ typedef vector <pair<float, float>> path;
 typedef pair <pair<float, float>, pair<float, float>> line;
 typedef pair <float, float> point;
 
-int jumps = 1;
-
 unsigned const int mapsizex = 140; // horizontal size of the map
 unsigned const int mapsizey = 140; // vertical size size of the map
 
@@ -35,4 +33,3 @@ float distancefromcenterline(point tpoint)
 {
 	return abs((directline.second.second - directline.first.second)*tpoint.first - (directline.second.first - directline.first.first)*tpoint.second + directline.second.first*directline.first.second - directline.second.second*directline.first.first) / (sqrt(pow(directline.second.first - directline.first.first, 2) + pow(directline.second.second - directline.first.first, 2)));
 }
-
