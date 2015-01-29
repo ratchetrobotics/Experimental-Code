@@ -9,13 +9,16 @@
 
 using namespace std;
 
+typedef vector<pair<float, float>> path;
+typedef pair < pair<float, float>, pair<float, float> > line;
+
 int jumps = 1;
 
 unsigned const int mapsizex = 140; // horizontal size of the map
 unsigned const int mapsizey = 140; // vertical size size of the map
 
-vector<pair<float, float>> shortestpath;
-pair < pair<float, float>, pair<float, float> >  directline;
+path shortestpath;
+line directline;
 
 float pathlength(vector<pair<float, float>> tpath)
 {
