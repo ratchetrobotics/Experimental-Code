@@ -25,7 +25,7 @@ float pathlength(vector<pair<float, float>> tpath)
 	return length;
 }
 
-float distancefromcenter(pair<float, float> tpoint)
+float distancefromcenterline(pair<float, float> tpoint)
 {
 	return abs((directline.second.second - directline.first.second)*tpoint.first - (directline.second.first - directline.first.first)*tpoint.second + directline.second.first*directline.first.second - directline.second.second*directline.first.first) / (sqrt(pow(directline.second.first - directline.first.first, 2) + pow(directline.second.second - directline.first.first, 2)));
 }
