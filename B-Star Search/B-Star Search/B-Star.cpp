@@ -34,6 +34,22 @@ int orientation(point p, point q, point r)
 	return (val > 0) ? 1 : 2;
 }
 
+bool doIntersect(line a, line b)
+{
+	int o1 = orientation(a.first, a.second, b.first);
+	int o2 = orientation(a.first, a.second, b.second);
+	int o3 = orientation(b.first, b.second, a.first);
+	int o4 = orientation(b.first, b.second, a.second);
+
+	if (o1 != o2 && o3 != o4){ return true; }
+
+	if (o1 == 0 && onSegment(a.first, b.first, a.second)) return true;
+	if (o2 == 0 && onSegment(a.first, b.second, a.second)) return true;
+	if (o3 == 0 && onSegment(b.first, a.first, b.second)) return true;
+	if (o4 == 0 && onSegment(b.first, a.second, b.second)) return true;
+	return false;
+}
+
 bool obsticalcheck(path tpath)
 {
 	for (int i = 0; i < tpath.size(); i++)
