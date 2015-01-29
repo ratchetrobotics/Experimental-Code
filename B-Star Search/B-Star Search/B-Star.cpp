@@ -12,7 +12,7 @@ using namespace std;
 unsigned const int mapsizex = 140; // horizontal size of the map
 unsigned const int mapsizey = 140; // vertical size size of the map
 
-vector<pair<float, float>> path;
+vector<pair<float, float>> shortestpath;
 pair < pair<float, float>, pair<float, float> >  directline;
 
 float pathlength(vector<pair<float, float>> tpath)
