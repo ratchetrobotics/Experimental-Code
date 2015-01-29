@@ -15,6 +15,7 @@ typedef pair <float, float> point;
 
 unsigned const int mapsizex = 140; // horizontal size of the map
 unsigned const int mapsizey = 140; // vertical size size of the map
+float resolution = 0.1;
 
 path shortestpath;
 line directline;
