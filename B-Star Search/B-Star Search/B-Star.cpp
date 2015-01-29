@@ -27,6 +27,13 @@ bool onSegment(point p, point q, point r)
 	return false;
 }
 
+int orientation(point p, point q, point r)
+{
+	int val = (q.second - p.second) * (r.first - q.first) - (q.first - p.first) * (r.second - q.second);
+	if (val == 0) return 0;
+	return (val > 0) ? 1 : 2;
+}
+
 bool obsticalcheck(path tpath)
 {
 	for (int i = 0; i < tpath.size(); i++)
