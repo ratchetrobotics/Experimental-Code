@@ -19,6 +19,15 @@ float resolution = 0.1;
 
 path shortestpath;
 line directline;
+vector<line> obsticals;
+
+bool obsticalcheck(path tpath)
+{
+	for (int i = 0; i < tpath.size(); i++)
+	{
+
+	}
+}
 
 float pathlength(path tpath)
 {
@@ -46,5 +55,6 @@ path findshortestpath(int maxjumps, point start, point end)
 	directpath.push_back(start);
 	directpath.push_back(end);
 
-	if (!intersect(directpath)){return;}
+	if (!obsticalcheck(directpath)){return;}
+
 }
