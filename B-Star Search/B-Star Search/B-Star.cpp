@@ -92,6 +92,6 @@ path findshortestpath(int maxjumps, point start, point end)
 	directpath.push_back(start);
 	directpath.push_back(end);
 
-	if (!obsticalcheck(directpath)){return;}
+	if (!obsticalcheck(directpath)){return directpath;}
 
 }
