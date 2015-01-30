@@ -23,6 +23,7 @@ float resolution = 0.1;
 path blank;
 
 path shortestpath;
+float lengthofshortestpath = 10000;
 line directline;
 vector<line> obsticals;
 
@@ -32,6 +33,7 @@ bool mapiteradvance()
 	{
 		if ((*mapiter[w]).first == mapsizex || (*mapiter[w]).second == mapsizey)
 		{
+			if (w == mapiter.size() - 1){ return false; }
 			path tmp;
 			for (float tx = 0; tx <= mapsizex; tx += 0.1)
 			{
@@ -41,13 +43,15 @@ bool mapiteradvance()
 				}
 			}
 			mapiter[w] = tmp.begin();
+			return true;
 		}
 		else
 		{
 			++mapiter[w];
-			return;
+			return true;
 		}
 	}
+	return false;
 }
 //(std::vector<int>::iterator it = myvector.begin() ; it != myvector.end(); ++it) *it
 void populatemapiter(int number)
@@ -140,20 +144,31 @@ path findshortestpath(int maxjumps, point start, point end, bool endwhenfind = f
 	directline.second.second = end.second;
 
 	path directpath;
-	path checkpath;
+	path checkpath = blank;
+	float checkpathlength;
 	directpath.push_back(start);
 	directpath.push_back(end);
 
 	if (!obsticalcheck(directpath)){return directpath;}
-	
-	populatemapiter(maxjumps);
-	
-	checkpath.clear();
-	checkpath.push_back(start);
-//	checkpath.push_back(make_pair(, ));
 
+	for (int j = 1; j <= maxjumps; j++)
+	{
+		populatemapiter(j);
+		while (mapiteradvance())
+		{
+			checkpath.clear();
+			checkpath.push_back(start);
+			for (int p = 0; p < mapiter.size(); p++)
+			{
+				checkpath.push_back(*mapiter[p]);
+			}
+			checkpath.push_back(end);
+			checkpathlength = pathlength(checkpath);
+			if (obsticalcheck(checkpath) && checkpathlength < lengthofshortestpath){ shortestpath = checkpath; lengthofshortestpath = checkpathlength; }
+		}
+	}
 	
-	return blank;
+	return checkpath;
 
 }
 
