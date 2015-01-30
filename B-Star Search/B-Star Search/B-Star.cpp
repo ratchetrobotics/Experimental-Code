@@ -21,6 +21,11 @@ path shortestpath;
 line directline;
 vector<line> obsticals;
 
+void populateobsticals()
+{
+	obsticals.push_back(make_pair(make_pair(0,5),make_pair(10,5)));
+}
+
 bool onSegment(point p, point q, point r)
 {
 	if (q.first <= max(p.first, r.first) && q.first >= min(p.first, r.first) && q.second <= max(p.second, r.second) && q.second >= min(p.second, r.second)){return true;}
@@ -101,7 +106,7 @@ void main()
 	point startpoint = make_pair(0,0);
 	point endpoint = make_pair(0,10);
 	path mypath = findshortestpath(100, startpoint, endpoint);
-
+	populateobsticals();
 	for (int k = 0; k < mypath.size(); k++)
 	{
 		cout << "(" << mypath[k].first << "," << mypath[k].second << ")" << endl;
