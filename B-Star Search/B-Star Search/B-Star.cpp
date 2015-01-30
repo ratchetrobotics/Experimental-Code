@@ -123,7 +123,7 @@ bool obsticalcheck(path tpath)
 
 float pathlength(path tpath)
 {
-	float length;
+	float length = 0;
 	for (int i = 1; i < tpath.size(); i++)
 	{
 		length += sqrt(pow(tpath[i].first - tpath[i - 1].first, 2) + pow(tpath[i].second - tpath[i - 1].second, 2));
