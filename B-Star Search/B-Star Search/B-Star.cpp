@@ -113,5 +113,6 @@ void main()
 	{
 		cout << "(" << mypath[k].first << "," << mypath[k].second << ")" << endl;
 	}
+	cout << "Done" << endl;
 	cin.ignore();
 }
