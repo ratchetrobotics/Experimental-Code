@@ -95,3 +95,11 @@ path findshortestpath(int maxjumps, point start, point end)
 	if (!obsticalcheck(directpath)){return directpath;}
 
 }
+
+void main()
+{
+	point startpoint = make_pair(0,0);
+	point endpoint = make_pair(45.1,56.8);
+	findshortestpath(100, startpoint, endpoint);
+	cin.ignore();
+}
