@@ -12,15 +12,60 @@ using namespace std;
 typedef vector <pair<float, float>> path;
 typedef pair <pair<float, float>, pair<float, float>> line;
 typedef pair <float, float> point;
+typedef vector<point>::iterator vectoriter;
+typedef vector<vector<point>::iterator> vectoritervector;
 
 unsigned const int mapsizex = 140; // horizontal size of the map
 unsigned const int mapsizey = 140; // vertical size size of the map
+vectoritervector mapiter;
+
 float resolution = 0.1;
 path blank;
 
 path shortestpath;
 line directline;
 vector<line> obsticals;
+
+bool mapiteradvance()
+{
+	for (int w = 0; w <mapiter.size(); w++)
+	{
+		if ((*mapiter[w]).first == mapsizex || (*mapiter[w]).second == mapsizey)
+		{
+			path tmp;
+			for (float tx = 0; tx <= mapsizex; tx += 0.1)
+			{
+				for (float ty = 0; ty <= mapsizey; ty += 0.1)
+				{
+					tmp.push_back(make_pair(tx, ty));
+				}
+			}
+			mapiter[w] = tmp.begin();
+		}
+		else
+		{
+			++mapiter[w];
+			return;
+		}
+	}
+}
+//(std::vector<int>::iterator it = myvector.begin() ; it != myvector.end(); ++it) *it
+void populatemapiter(int number)
+{
+	path tmp;
+	for (int q = 0; q < number; q++)
+	{
+		for (float tx = 0; tx <= mapsizex; tx += 0.1)
+		{
+			for (float ty = 0; ty <= mapsizey; ty += 0.1)
+			{
+				tmp.push_back(make_pair(tx, ty));
+			}
+		}
+		mapiter.push_back(tmp.begin());
+	}
+	return;
+}
 
 void populateobsticals()
 {
@@ -87,7 +132,7 @@ float distancefromcenterline(point tpoint)
 	return abs((directline.second.second - directline.first.second)*tpoint.first - (directline.second.first - directline.first.first)*tpoint.second + directline.second.first*directline.first.second - directline.second.second*directline.first.first) / (sqrt(pow(directline.second.first - directline.first.first, 2) + pow(directline.second.second - directline.first.first, 2)));
 }
 
-path findshortestpath(int maxjumps, point start, point end)
+path findshortestpath(int maxjumps, point start, point end, bool endwhenfind = false)
 {
 	directline.first.first = start.first;
 	directline.first.second = start.second;
@@ -95,10 +140,19 @@ path findshortestpath(int maxjumps, point start, point end)
 	directline.second.second = end.second;
 
 	path directpath;
+	path checkpath;
 	directpath.push_back(start);
 	directpath.push_back(end);
 
 	if (!obsticalcheck(directpath)){return directpath;}
+	
+	populatemapiter(maxjumps);
+	
+	checkpath.clear();
+	checkpath.push_back(start);
+//	checkpath.push_back(make_pair(, ));
+
+	
 	return blank;
 
 }
