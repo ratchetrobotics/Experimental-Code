@@ -88,6 +88,7 @@ float distancefromcenterline(point tpoint)
 
 path findshortestpath(int maxjumps, point start, point end)
 {
+	path blank;
 	directline.first.first = start.first;
 	directline.first.second = start.second;
 	directline.second.first = end.first;
@@ -98,6 +99,7 @@ path findshortestpath(int maxjumps, point start, point end)
 	directpath.push_back(end);
 
 	if (!obsticalcheck(directpath)){return directpath;}
+	return blank;
 
 }
 
