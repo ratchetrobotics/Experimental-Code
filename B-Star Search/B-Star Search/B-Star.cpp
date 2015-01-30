@@ -99,7 +99,7 @@ path findshortestpath(int maxjumps, point start, point end)
 void main()
 {
 	point startpoint = make_pair(0,0);
-	point endpoint = make_pair(45.1,56.8);
+	point endpoint = make_pair(0,10);
 	path mypath = findshortestpath(100, startpoint, endpoint);
 
 	for (int k = 0; k < mypath.size(); k++)
