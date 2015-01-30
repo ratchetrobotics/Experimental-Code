@@ -52,10 +52,18 @@ bool doIntersect(line a, line b)
 
 bool obsticalcheck(path tpath)
 {
-	for (int i = 0; i < tpath.size(); i++)
+	line currentmove;
+	for (int i = 1; i < tpath.size(); i++)
 	{
+		currentmove.first = tpath[i - 1];
+		currentmove.second = tpath[i];
 
+		for (int j = 0; j < obsticals.size(); j++)
+		{
+			if (doIntersect(currentmove, obsticals[i])){return false;}
+		}
 	}
+	return true;
 }
 
 float pathlength(path tpath)
