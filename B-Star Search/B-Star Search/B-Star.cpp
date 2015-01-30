@@ -16,6 +16,7 @@ typedef pair <float, float> point;
 unsigned const int mapsizex = 140; // horizontal size of the map
 unsigned const int mapsizey = 140; // vertical size size of the map
 float resolution = 0.1;
+path blank;
 
 path shortestpath;
 line directline;
@@ -88,7 +89,6 @@ float distancefromcenterline(point tpoint)
 
 path findshortestpath(int maxjumps, point start, point end)
 {
-	path blank;
 	directline.first.first = start.first;
 	directline.first.second = start.second;
 	directline.second.first = end.first;
@@ -108,7 +108,7 @@ void main()
 	point startpoint = make_pair(0,0);
 	point endpoint = make_pair(0,10);
 	path mypath = findshortestpath(100, startpoint, endpoint);
-	populateobsticals();
+	//populateobsticals();
 	for (int k = 0; k < mypath.size(); k++)
 	{
 		cout << "(" << mypath[k].first << "," << mypath[k].second << ")" << endl;
